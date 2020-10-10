@@ -43,14 +43,14 @@ def check_guess():
 def update_stats():
     """ Updates the stats for the user on the backend """
 
-    score = request.json["score"]
+    score = int(request.json["score"])
     highscore = session.get("highscore", 0)
     times_played = session.get("times_played", 0)
 
     session['times_played'] = times_played + 1
     session['highscore'] = max(score, highscore)
 
-    return jsonify({'timesPlayed': 0, 'highScore': 0})
+    return jsonify({'timesPlayed': times_played, 'highscore': highscore})
 
 
 # Needed for Replit flask server

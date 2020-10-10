@@ -84,7 +84,7 @@ class BoggleGame {
     async sendStats() {
         let score = Number($('#score span').text());
 
-        const res = await axios.post('/stats', { score: score });
+        await axios.post('/stats', { score: score });
     }
 
     showRestart() {
