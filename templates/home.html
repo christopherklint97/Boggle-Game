@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %} Boggle {% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <h1 class="display-3 py-5">Boggle for the win!</h1>
+
+    <table class="table table-bordered">
+        <tbody>
+            {% for row in board %}
+            <tr>
+                {% for cell in row %}
+                <td>{{cell}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="row">
+        <p class="col-6 text-center h4" id="score">Score: <span>0</span></p>
+        <p class="col-6 text-center h4" id="high-score">High score: <span>{{session['highscore']}}</span></p>
+    </div>
+
+    <p class="h2 py-2" id="timer">Timer: <span>60</span></p>
+
+    <form id="guess-form" method='get'>
+        <div class="container">
+            <div class="form-row align-items-center justify-content-center">
+                <div class="col-8 col-md-6">
+                    <input class="form-control" type="text" name="guess" id="guess" placeholder="Write your guess..."
+                        minlength="2" required>
+                </div>
+                <div class="col-4 col-md-2">
+                    <input class="form-control btn btn-dark" type="submit" value="Submit">
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <p class="h1 py-2" id="result-msg"></p>
+
+    <button type="button" class="btn btn-info" style="display: none;" id="restart-btn">Restart</button>
+
+
+</div>
+
+
+
+{% endblock %}
